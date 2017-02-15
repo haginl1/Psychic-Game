@@ -22,7 +22,7 @@
             <li><a href="#">Hangman |</a></li>
           </ul>
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.container -->
       </nav>
     </div>
   </header>
@@ -30,26 +30,52 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="well">
-        <h1>Psychic Game</h1>
+          <img src="assets/images/lady.jpg" alt="Lady" style="width:100px;height:100px;float:right;"> 
+          <h1>Psychic Game</h1>
+          <p>Guess what letter I'm thinking</p> 
                 
-          <p>Guess what letter I'm thinking</p>
-          <p>Input Guess:</p>
-          <br>
-          <p>Wins:</p>
-          <br>
-          <p>Losses:</p>
-          <br>
-          <p>Chances</p>
-        </div>
-      </div>
-    <div class="col-sm-4">
-      <div class="well">
-        <h2> Games</h2>
-        <img src="assets/images/psychic-game.jpg" class="social" alt="psychic game">
-        <img src="assets/images/hangman.jpg" class="social" alt="hangeman">
-      </div>
-    </div>
-  </div>
+            <div class="form-group">
+              <label for="usr">Input Guess</label>
+              <input type="text" class="form-control" id="usr">
+              <input type="button" class="btn btn-info" value="Try">
+              <br><br>
+              <div class="col-sm-12">
+                    <div class="col-sm-4"><p>Wins:</p>
+                    <input type="text" class="form-control" id="usr"></div>
+                    <div class="col-sm-4"><p>Losses:</p>
+                    <input type="text" class="form-control" id="usr"></div>
+                    <div class="col-sm-4"><p>Chances:</p>
+                    <input type="text" class="form-control" id="usr"></div>
+              </div><br><br><br><br>
+    
+            </div>  
+      </div><!--end well div-->  
+    </div><!--end col8 div-->
+      <div class="col-sm-4">
+        <div class="well">
+          <h2> Games</h2>
+          <img src="assets/images/psychic-game.jpg" class="social" alt="psychic game">
+          <img src="assets/images/hangman.jpg" class="social" alt="hangeman">
+        </div><!--end well div-->
+      </div><!--end col4 div-->
+    </div><!--end div class row div -->
 </body>
-<script>
+
+
+<script language="javascript" type="text/javascript">
+
+var winsCounter
+var lossesCounter
+
+
+function randomString() {
+	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+	var string_length = 1;
+	var randomstring = '';
+	for (var i=0; i<string_length; i++) {
+		var rnum = Math.floor(Math.random() * chars.length);
+		randomstring += chars.substring(rnum,rnum+1);
+	}
+	document.randform.randomfield.value = randomstring;
+}
 </script>

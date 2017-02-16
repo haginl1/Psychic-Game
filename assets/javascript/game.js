@@ -1,39 +1,52 @@
 var guessCount = 0;
 var wins = 0;
-var losses = 0;
+var losses = 9;
 var MAX_GUESSES = 3;
-var rLetter = randomLetter()
-var chances = MAX_GUESSES-1;
+var rLetter = "";
 
 
+//picks a random letter between a and z
 function randomLetter() {
     var chars = "abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
-    return chars.substr( Math.floor(Math.random() * 52), 1);
-} //picks a random letter between a and z
+    rLetter= chars.substr( Math.floor(Math.random() * 52), 1);
+    console.log(rLetter);
+} 
 
 function guessOne(){
+ 
   // Get a guess from the player
   var playerGuess = document.getElementById("guess").value;
 
-  if (playerGuess == randomLetter){
-    document.getElementById("message").innerHTML= "It took you " +guessCount+ " guesses";
-    wins += 1;
-    return;  // prevents saying 'ran out' if guessed in last round
-  } else if (playerGuess != randomLetter){
-    document.getElementById("message").innerHTML= "Nope! Guess again.";
-    document.getElementById("chances").innerHTML= "You have " +chances+ " guesses remaining";
-  } 
-  losses +=1;
-  document.getElementById("losses").innerHTML= "Losses: " +losses;
-  wins +=1;
-  document.getElementById("wins").innerHTML= "Wins: " +wins;
-  guessCount += 1;
-
-  if (guessCount >= MAX_GUESSES) {
-    document.getElementById("message").innerHTML= "Sorry, you ran out of guesses.  The mystery letter was " + rLetter;
+   if (playerGuess == rLetter){
+     wins+=1;
+     document.getElementById("message").innerHTML= "Correct!";    
+     document.getElementById("wins").innerHTML= "Total Wins: " +wins;
+     randomLetter();
+  } else {
+    losses-=1;
+    if(losses==0){
+      losses=9;
+      document.getElementById("guessbtn").disabled=true;
+      document.getElementById("message").innerHTML= "Sorry Game Over! Hit Restart Button";
+    } else{
+      document.getElementById("message").innerHTML= "Nope! You have " + losses + " chances left.";
+    }
+    document.getElementById("losses").innerHTML= "Total Losses: " +losses;
   }
+}
 
-  // Lend a hand by clearing out their last guess
-  document.getElementById("guess").value = "";
+function newGame(){
+  document.getElementById("guessbtn").disabled=false;
+  randomLetter();
+  document.getElementById("message").innerHTML= "Good Luck!";
+  document.getElementById("guess").focus();
+} 
+
+
+  
+  
+  
     
-}  
+
+
+    

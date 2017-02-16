@@ -32,20 +32,23 @@
         <div class="well">
           <img src="assets/images/lady.jpg" alt="Lady" style="width:100px;height:100px;float:right;"> 
           <h1>Psychic Game</h1>
-          <p>Guess what letter I'm thinking</p> 
-                
+          <p>Type a letter between a and z (then press try)</p> 
+              <input id="guess" type="text">
+              <input type="button" value="Try" onClick="guessOne()"/>
+              <p id="message"></p>
+              <p id="chances"></p>
+              <p id="wins"></p>
+              <p id="losses"></p>
+               
             <div class="form-group">
-              <label for="usr">Input Guess</label>
-              <input type="text" class="form-control" id="usr">
-              <input type="button" class="btn btn-info" value="Try">
-              <br><br>
+              
               <div class="col-sm-12">
                     <div class="col-sm-4"><p>Wins:</p>
-                    <input type="text" class="form-control" id="usr"></div>
+                    <input type="text" class="form-control" id="wins"></div>
                     <div class="col-sm-4"><p>Losses:</p>
-                    <input type="text" class="form-control" id="usr"></div>
+                    <input type="text" class="form-control" id="losses"></div>
                     <div class="col-sm-4"><p>Chances:</p>
-                    <input type="text" class="form-control" id="usr"></div>
+                    <input type="text" class="form-control" id="chances"></div>
               </div><br><br><br><br>
     
             </div>  
@@ -64,18 +67,46 @@
 
 <script language="javascript" type="text/javascript">
 
-var winsCounter
-var lossesCounter
+var guessCount = 0;
+var wins = 0;
+var losses = 0;
+var MAX_GUESSES = 3;
+var rLetter = randomLetter()
+var chances = MAX_GUESSES-1;
 
 
-function randomString() {
-	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-	var string_length = 1;
-	var randomstring = '';
-	for (var i=0; i<string_length; i++) {
-		var rnum = Math.floor(Math.random() * chars.length);
-		randomstring += chars.substring(rnum,rnum+1);
-	}
-	document.randform.randomfield.value = randomstring;
-}
+function randomLetter() {
+    var chars = "abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
+    return chars.substr( Math.floor(Math.random() * 52), 1);
+} //picks a random letter between a and z
+
+function guessOne(){
+  // Get a guess from the player
+  var playerGuess = document.getElementById("guess").value;
+
+  if (playerGuess == randomLetter){
+    document.getElementById("message").innerHTML= "It took you " +guessCount+ " guesses";
+    wins += 1;
+    return;  // prevents saying 'ran out' if guessed in last round
+  } else if (playerGuess != randomLetter){
+    document.getElementById("message").innerHTML= "Nope! Guess again.";
+    document.getElementById("chances").innerHTML= "You have " +chances+ " guesses remaining";
+  } 
+  losses +=1;
+  document.getElementById("losses").innerHTML= "Losses: " +losses;
+  wins +=1;
+  document.getElementById("wins").innerHTML= "Wins: " +wins;
+  guessCount += 1;
+
+  if (guessCount >= MAX_GUESSES) {
+    document.getElementById("message").innerHTML= "Sorry, you ran out of guesses.  The mystery letter was " + rLetter;
+  }
+
+  // Lend a hand by clearing out their last guess
+  document.getElementById("guess").value = "";
+    
+}  
+
+
+
 </script>

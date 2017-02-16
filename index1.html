@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="assets/javascript/game1.js" language="javascript" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body onload="randomLetter()">
+  <header id="masthead">
+    <div class="container">
+      <a href="index.html" id="logo">Games</a>
+      <!-- BOOTSTRAP NAV  -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Psychic Game |</a></li>
+            <li><a href="#">Hangman |</a></li>
+          </ul>
+        </div>
+        <!-- /.container -->
+      </nav>
+    </div>
+  </header>
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="well">
+          <img src="assets/images/lady.jpg" alt="Lady" style="width:100px;height:100px;float:right;"> 
+          <h1>Psychic Game</h1>
+          <p>Type a letter between a and z; UPPER or lower case (then press Guess)</p> 
+
+          <form id="guessFrm">
+            <input id="guess" type="text" maxlength="1" minlength="1" name="letter" placeholder="Guess a letter" autofocus />
+            <input  id="guessbtn" name="guess" type="button" value="Guess" onClick="guessOne()" />
+            <button id="restart" name="restart" type="button" class="submit" onClick="newGame()">Restart</button>
+          </form>   
+              <p id="message"></p>
+              <p id="wins"></p>
+              <p id="losses"></p>
+              <p id="hint"></p>
+          <br>
+          <br>            
+      </div><!--end well div-->  
+    </div><!--end col8 div-->
+      <div class="col-sm-4">
+        <div class="well">
+          <h2> Games</h2>
+          <img src="assets/images/psychic-game.jpg" class="social" alt="psychic game">
+          <img src="assets/images/hangman.jpg" class="social" alt="hangeman">
+        </div><!--end well div-->
+      </div><!--end col4 div-->
+    </div><!--end div class row div -->
+</body>
+
+

@@ -30,12 +30,12 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="well">
-          <img src="assets/images/lady.jpg" alt="Lady" style="width:100px;height:100px;float:right;"> 
+          <img src="assets/images/lady.jpg" alt="Psychic Lady" style="width:100px;height:100px;float:right;"> 
           <h1>Psychic Game</h1>
           <p>Type a letter between a and z; upper or lower case (then press Guess)</p> 
 
           <form id="guessFrm">
-            <input id="guess" type="text" maxlength="1" minlength="1" name="letter" placeholder="Guess a letter" autofocus />
+            <input id="guess" type="text" maxlength="1" minlength="1" name="letter" placeholder="Guess a letter" autofocus autocomplete="off"/>
             <input  id="guessbtn" name="guess" type="button" value="Guess" onClick="guessOne()" />
             <button id="restart" name="restart" type="button" class="submit" onClick="newGame()">Restart</button>
           </form>   
@@ -43,6 +43,7 @@
               <p id="wins"></p>
               <p id="losses"></p>
               <p id="chances"></p>
+               
               <br>
               <br>
               <p id="hint"></p>

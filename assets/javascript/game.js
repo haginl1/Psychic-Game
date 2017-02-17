@@ -5,7 +5,8 @@ var MAXTRIES = 3;
 var rLetter = "";
 var attempts = MAXTRIES;
 var DEBUG = 0;
-
+var h = "";
+var ph = 0;
 
 //picks a random letter between a and z
 function randomLetter() {
@@ -21,11 +22,16 @@ function randomLetter() {
     document.getElementById("hint").innerHTML="It's near: " +chars[chars.indexOf(rLetter) - fuzzy];
 } 
 
+
 function guessOne(){
   // Get a guess from the player
   var playerGuess = document.getElementById("guess").value;
-
-   if (playerGuess == rLetter){
+  ph = MAXTRIES - (attempts-1);
+  h+= "Attempt " + ph + ": " + playerGuess + "<br />";
+  document.getElementById("history").innerHTML= h;
+  console.log(h); 
+      
+  if (playerGuess == rLetter){
      wins+=1;
      document.getElementById("message").innerHTML= "Correct! Keep Guessing.";    
      document.getElementById("wins").innerHTML= "Total Wins: " +wins;
@@ -48,6 +54,7 @@ function guessOne(){
       }
 }
 
+
 document.onsubmit = function(e){
   e.preventDefault();
 }
@@ -65,6 +72,9 @@ function newGame(){
   randomLetter();
   document.getElementById("message").innerHTML= "Good Luck!";
   document.getElementById("guess").focus();
+  h = "";
+  document.getElementById("history").innerHTML= "";
+
 } 
 
 
